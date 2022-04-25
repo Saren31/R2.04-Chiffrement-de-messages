@@ -32,6 +32,6 @@ clean:
 	rm main
 	
 test:
-	gcc -o main main.c chiffrer.c
+	gcc -o main main.c chiffrer.c dechiffrer.c
 
 	

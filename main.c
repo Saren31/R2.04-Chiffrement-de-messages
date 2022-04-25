@@ -10,10 +10,10 @@
 
 void main() {
 
-   char str[] = "ABCD";
+   char str[] = "Je m'appelle Lucas Veslin et je fais tous le travail pour l'instant !";
    char* res = chiffrer(1,5,str);
    printf("%s",res);
-   char str2[] = "abcd";
-   char* res2 = chiffrer(1,5,str2);
+   
+   char* res2 = dechiffrer(1,5,res);
    printf("\n%s",res2);
 }
