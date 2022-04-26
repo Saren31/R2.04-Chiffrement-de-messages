@@ -25,6 +25,15 @@ char* dechiffrer(int choix, int clé, char phrase[LG_CHAINE+1]) {
 					phrase[i]+= 26;
 				}
 			}
+			else if (phrase[i] >= '0' && phrase[i]<= '9') {
+				char c = phrase[i] - '0';
+				c -= clé;
+				c = c % 10;
+				phrase[i] = c + '0';
+				if (c + '0' < '0') {
+					phrase[i]+= 10;
+				}
+			}
 		}
 	}
 	return phrase;
