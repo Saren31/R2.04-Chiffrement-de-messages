@@ -5,7 +5,6 @@
 
 char* chiffrer(int choix, int clé, char phrase[LG_CHAINE+1]) {
 	if (choix == 1) {
-		
 		for(int i=0;i<strlen(phrase);i++) {
 			if (phrase[i] >= 'A' && phrase[i]<= 'Z') {
 				char c = phrase[i] - 'A';

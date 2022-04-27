@@ -1,13 +1,13 @@
  #Recompile toute l'application (Aucune règle de dépendence)
 all:
-	gcc -o main main.c verifier.c convertir.c chiffrer.c dechiffrer.c
+	gcc -o main main.c verifier.c convertir.c chiffrer.c dechiffrer.c écriture.c
 
 #Fait l'édition de liens si .o plus récents que main
-main: main.o verifier.o convertir.o chiffrer.o dechiffrer.o
-	gcc -o main main.o verifier.o convertir.o chiffrer.o dechiffrer.o
+main: main.o verifier.o convertir.o chiffrer.o dechiffrer.o écriture.o
+	gcc -o main main.o verifier.o convertir.o chiffrer.o dechiffrer.o écriture.o
 
 #Recompile si main.c ou les .h plus récents que main.o
-main.o: main.c verifier.h convertir.h chiffrer.h dechiffrer.h
+main.o: main.c verifier.h convertir.h chiffrer.h dechiffrer.h écriture.h
 	gcc -c main.c
 
 #Recompile si verifier.c ou verifier.h plus récents que verifier.o
@@ -25,6 +25,10 @@ chiffrer.o: chiffrer.c chiffrer.h
 #Recompile si dechiffrer.c ou dechiffrer.h plus récents que dechiffrer.o
 dechiffrer.o: dechiffrer.c dechiffrer.h
 	gcc -c dechiffrer.c
+	
+#Recompile si écriture.c ou écriture.h plus récents que écriture.o
+écriture.o: écriture.c écriture.h
+	gcc -c écriture.c
 
 #Efface les objets et l'exécutable	
 clean:
@@ -32,6 +36,6 @@ clean:
 	rm main
 	
 test:
-	gcc -o main main.c chiffrer.c dechiffrer.c verifier.c
+	gcc -o main main.c chiffrer.c dechiffrer.c verifier.c écriture.c
 
 	
