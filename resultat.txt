@@ -1,0 +1,24 @@
+Le message initial est : abcd
+La clé est : 2
+Le message chiffré est : cdef
+
+___
+
+Le message initial est : JAIE
+La clé est : 5
+Le message chiffré est : OFNJ
+
+___
+
+Le message initial est : Comment ca se passe
+La clé est : 4
+Le message chiffré est : Gsqqirx ge wi tewwi
+
+___
+
+Le message initial est : WYAZW
+La clé est : 10
+Le message chiffré est : GIKJG
+
+___
+

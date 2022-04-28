@@ -36,6 +36,6 @@ clean:
 	rm main
 	
 test:
-	gcc -o main main.c chiffrer.c dechiffrer.c verifier.c écriture.c
+	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écriture.c
 
 	
