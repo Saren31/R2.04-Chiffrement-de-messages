@@ -3,4 +3,4 @@
 #include <string.h>
 #include <stdlib.h>
 
-void écriture(char* str, int clé, char* res);
+void écritureCesar(char* str, int clé, char* res, int choix);

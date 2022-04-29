@@ -7,13 +7,14 @@
 #include "dechiffrerVigenaire.h"
 #include "convertir.h"
 #include "verifier.h"
-#include "écriture.h"
+#include "écritureCesar.h"
+#include "écritureVigenaire.h"
+#include "convertir.h"
 #include <string.h>
 
 #define LG_CHAINE 100
 
 
-// Il reste la gestion des accents et vigénaire à mettre en place
 void main() {
 	//Il faut faire un make test pour utiliser le programme (sous linux)
 	char str[LG_CHAINE];
@@ -23,11 +24,17 @@ void main() {
 	char* res;
 	char* res2;
 	int ver;
-	char algo;
+	char algo, chiffre;
+	
+	FILE* fic;
+	fic = fopen("resultat.txt", "w");
+	fclose(fic);
 	
 	while (strcmp("stop\n",str)!=0) {
-		printf("Entrez la phrase que vous souhaitez chiffrer (ou stop si vous souhaitez arrêter) : ");
+		printf("Entrez la phrase que vous souhaitez chiffrer ou déchiffrer (ou stop si vous souhaitez arrêter) : ");
 		fgets(str, LG_CHAINE, stdin);
+		//str = convertir(str);
+		//strcpy(str,convertir(str));
 		strcpy(str2,str);
 		if (strcmp("stop\n",str)==0) {
 			break;
@@ -38,27 +45,41 @@ void main() {
 			printf("\nVous avez utilisé des caractères spéciaux\n\n");
 		}
 		else{
+		printf("\nSouhaitez vous chiffrer ou déchiffrer ? ('c' pour chiffrer, 'd' pour déchiffrer) ");
+		scanf("%c%*c", &chiffre);
 		printf("\nQuel algorithme souhaitez vous utiliser ? ('c' pour César, 'v' pour Vigénaire) ");
 		scanf("%c%*c", &algo);
 		if (algo == 'c') {
 			printf("\nEntrez la clé que vous souhaitez utiliser : ");
 			scanf("%d%*c",&clé);
-			res = chiffrerCesar(1,clé,str2);
-			écriture(str,clé,res);
-			printf("\nLa phrase chiffrée est la suivante : %s",res);
+			
+			if (chiffre == 'c') {
+				res = chiffrerCesar(1,clé,str2);
+				écritureCesar(str,clé,res,1);
+				printf("\nLa phrase chiffrée est la suivante : %s",res);
+			}
    
-			res2 = dechiffrerCesar(1,clé,res);
-			printf("\nLa phrase déchiffrée est la suivante : %s\n",res2);
+			else if (chiffre == 'd') {
+				res2 = dechiffrerCesar(1,clé,str2);
+				écritureCesar(str,clé,res,2);
+				printf("\nLa phrase déchiffrée est la suivante : %s\n",res2);
+			}
 		}
 		else if (algo == 'v') {
 			printf("\nEntrez la clé que vous souhaitez utiliser : ");
 			fgets(clé2, LG_CHAINE, stdin);
-			res = chiffrerVigenaire(1,clé2,str2);
-			//écriture(str,clé,res);
-			printf("\nLa phrase chiffrée est la suivante : %s",res);
-   
-			res2 = dechiffrerVigenaire(1,clé2,res);
-			printf("\nLa phrase déchiffrée est la suivante : %s\n",res2);
+			
+			if (chiffre == 'c') {
+				res = chiffrerVigenaire(1,clé2,str2);
+				écritureVigenaire(str,clé2,res,1);
+				printf("\nLa phrase chiffrée est la suivante : %s",res);
+			}
+			
+			else if (chiffre == 'd') {
+				res2 = dechiffrerVigenaire(1,clé2,str2);
+				écritureVigenaire(str,clé2,res,2);
+				printf("\nLa phrase déchiffrée est la suivante : %s\n",res2);
+			}
 		}
 		else {
 			printf("Vous n'avez pas utilisé la bonne lettre");

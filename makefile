@@ -26,16 +26,20 @@ chiffrer.o: chiffrer.c chiffrer.h
 dechiffrer.o: dechiffrer.c dechiffrer.h
 	gcc -c dechiffrer.c
 	
-#Recompile si écriture.c ou écriture.h plus récents que écriture.o
-écriture.o: écriture.c écriture.h
-	gcc -c écriture.c
+#Recompile si écritureCesar.c ou écritureCesar.h plus récents que écritureCesar.o
+écritureCesar.o: écritureCesar.c écritureCesar.h
+	gcc -c écritureCesar.c
 
+#Recompile si écritureVigenaire.c ou écritureVigenaire.h plus récents que écritureVigenaire.o
+écritureVigenaire.o: écritureVigenaire.c écritureVigenaire.h
+	gcc -c écritureVigenaire.c
+	
 #Efface les objets et l'exécutable	
 clean:
 	rm main.o verifier.o convertir.o chiffrer.o dechiffrer.o
 	rm main
 	
 test:
-	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écriture.c
+	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écritureCesar.c écritureVigenaire.c convertir.c
 
 	
