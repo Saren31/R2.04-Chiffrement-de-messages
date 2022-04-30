@@ -1,13 +1,13 @@
  #Recompile toute l'application (Aucune règle de dépendence)
 all:
-	gcc -o main main.c verifier.c convertir.c chiffrer.c dechiffrer.c écriture.c
+	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écritureCesar.c écritureVigenaire.c convertir.c verifierClé.c
 
 #Fait l'édition de liens si .o plus récents que main
-main: main.o verifier.o convertir.o chiffrer.o dechiffrer.o écriture.o
+main: main.o chiffrerCesar.o dechiffrerCesar.o chiffrerVigenaire.o dechiffrerVigenaire.o verifier.o écritureCesar.o écritureVigenaire.o convertir.o verifierClé.o
 	gcc -o main main.o verifier.o convertir.o chiffrer.o dechiffrer.o écriture.o
 
 #Recompile si main.c ou les .h plus récents que main.o
-main.o: main.c verifier.h convertir.h chiffrer.h dechiffrer.h écriture.h
+main.o: main.c chiffrerCesar.h dechiffrerCesar.h chiffrerVigenaire.h dechiffrerVigenaire.h verifier.h écritureCesar.h écritureVigenaire.h convertir.h verifierClé.h
 	gcc -c main.c
 
 #Recompile si verifier.c ou verifier.h plus récents que verifier.o
@@ -34,12 +34,16 @@ dechiffrer.o: dechiffrer.c dechiffrer.h
 écritureVigenaire.o: écritureVigenaire.c écritureVigenaire.h
 	gcc -c écritureVigenaire.c
 	
+#Recompile si verifierClé.c ou verifierClé.h plus récents que verifierClé.o
+verifierClé.o: verifierClé.c verifierClé.h
+	gcc -c verifierClé.c
+	
 #Efface les objets et l'exécutable	
 clean:
 	rm main.o verifier.o convertir.o chiffrer.o dechiffrer.o
 	rm main
 	
 test:
-	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écritureCesar.c écritureVigenaire.c convertir.c
+	gcc -o main main.c chiffrerCesar.c dechiffrerCesar.c chiffrerVigenaire.c dechiffrerVigenaire.c verifier.c écritureCesar.c écritureVigenaire.c convertir.c verifierClé.c
 
 	

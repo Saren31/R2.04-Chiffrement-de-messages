@@ -5,7 +5,7 @@
 #include <ctype.h>
 
 
-char* chiffrerVigenaire(int choix, char clé[LG_CHAINE+1], char phrase[LG_CHAINE+1]) {
+char* chiffrerVigenaire(char clé[LG_CHAINE+1], char phrase[LG_CHAINE+1]) {
 	int lenMsg = strlen(phrase)-1;
 	int lenClé = strlen(clé)-1;
 	char clé2[LG_CHAINE+1];

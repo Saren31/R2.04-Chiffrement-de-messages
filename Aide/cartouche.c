@@ -14,13 +14,14 @@
 *                                                                             *
 *  Nom-prénom2 :       Launay-Matthis                                         *
 *                                                                             *
-*  Nom-prénom3 :       Kunpeng-Yu                                             *
+*  Nom-prénom3 :       Yu-Kunpeng                                             *
 *                                                                             *
-*  Nom-prénom4 :       Pablo Navarrete Falconio                               *
+*  Nom-prénom4 :       Navarrete_Falconio-Pablo                               *
 *                                                                             *
 *******************************************************************************
 *                                                                             *
-*  Nom du fichier :  fichier									              *
+*  Nom du fichier :  README									                  *
 *                                                                             *
 ******************************************************************************/
+
 
