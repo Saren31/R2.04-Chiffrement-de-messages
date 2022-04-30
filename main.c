@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "chiffrerCesar.h"
-#include "dechiffrerCesar.h"
-#include "chiffrerVigenaire.h"
-#include "dechiffrerVigenaire.h"
-#include "convertir.h"
-#include "verifier.h"
-#include "écritureCesar.h"
-#include "écritureVigenaire.h"
-#include "convertir.h"
-#include <string.h>
-#include "verifierClé.h"
+#include "Code/chiffrerCesar.h"
+#include "Code/dechiffrerCesar.h"
+#include "Code/chiffrerVigenere.h"
+#include "Code/dechiffrerVigenere.h"
+#include "Code/convertir.h"
+#include "Code/verifier.h"
+#include "Code/écritureCesar.h"
+#include "Code/écritureVigenere.h"
+#include "Code/convertir.h"
+#include "Code/verifierClé.h"
 
 #define LG_CHAINE 100
 
@@ -31,6 +30,7 @@ void main() {
 	fclose(fic);
 	
 	while (chiffre != 5) {
+		chiffre = 0;
 		printf("Choisissez le numéro correspondant à l'option que vous voulez utiliser : \n");
 		printf("1 - Chiffrer un message avec l'algorithme de César\n");
 		printf("2 - Chiffrer un message avec l'algorithme de Vigenère\n");
@@ -46,13 +46,12 @@ void main() {
 				strcpy(str2,str);
 				// Hélas la fonction convertir ne fonctionne pas
 				//strcpy(str,convertir(str));
-				//printf("%s",str);
 				ver = verifier(str);
 				if (ver==0) {
 					printf("\nVous avez utilisé des caractères spéciaux\n\n");
 				}
 				else {
-					printf("\nEntrez la clé que vous souhaitez utiliser : ");
+					printf("\nEntrez la clé que vous souhaitez utiliser : \n");
 					scanf("%d%*c",&clé);
 					if (verifierClé(clé) == 1) { 
 						res = chiffrerCesar(clé,str2);
@@ -80,8 +79,8 @@ void main() {
 					printf("\nEntrez la clé que vous souhaitez utiliser : ");
 					fgets(clé2, LG_CHAINE, stdin);
 					if (verifier(clé2) == 1) {
-						res = chiffrerVigenaire(clé2,str2);
-						écritureVigenaire(str,clé2,res,1);
+						res = chiffrerVigenere(clé2,str2);
+						écritureVigenere(str,clé2,res,1);
 						printf("\nLa phrase chiffrée est la suivante : %s\n",res);
 					}
 					else {
@@ -98,7 +97,7 @@ void main() {
 					printf("\nVous avez utilisé des caractères spéciaux\n\n");
 				}
 				else {
-					printf("\nEntrez la clé que vous souhaitez utiliser : ");
+					printf("\nEntrez la clé que vous souhaitez utiliser : \n");
 					scanf("%d%*c",&clé);
 					if (verifierClé(clé) == 1) { 
 						res = dechiffrerCesar(clé,str2);
@@ -126,8 +125,8 @@ void main() {
 					printf("\nEntrez la clé que vous souhaitez utiliser : ");
 					fgets(clé2, LG_CHAINE, stdin);
 					if (verifier(clé2) == 1) {
-						res = dechiffrerVigenaire(clé2,str2);
-						écritureVigenaire(str,clé2,res,2);
+						res = dechiffrerVigenere(clé2,str2);
+						écritureVigenere(str,clé2,res,2);
 						printf("\nLa phrase déchiffrée est la suivante : %s\n",res);
 					}
 					else {
@@ -139,9 +138,6 @@ void main() {
 				break;
 			default:
 				printf("\nVous ne pouvez utiliser que des chiffres entre 1 et 5 ! \n\n");
-				do{
-				c = getchar();
-				}while(c != EOF && c != '\n');
 		}
 	}
 	printf("Le fichier resultat.txt résume ce que vous venez de faire dans cette application\n");
