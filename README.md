@@ -1,6 +1,7 @@
 Nous avons choisi le sujet numéro 3. 
 Notre application permet de chiffrer et de déchiffrer un message en utilisant l'algorithme de Vigenèrere ou l'algorithme de César.
 L'équipe est composée de Lucas Veslin (et aussi de Matthis Launay, Kunpeng Yu, Pablo Navarrete Falconio).
+Lien GIT : https://gitlab.info.iut-tlse3.fr/vsl4346a/r2.04
 
 La fonction chiffrerCesar prend en paramètres d'entrées : un message (liste de caractères) et une clé (entier)
 Elle prend en sortie : le message chiffré (liste de caractères)
